@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ process_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="cyber-navy">
+    <div class="process-container">
+        <nav class="sub-nav">
+            <button onclick="location.href='/'" class="btn-home">← BACK TO DASHBOARD</button>
+            <h2 class="glow-text">{{ process_title }}</h2>
+        </nav>
+
+        <main class="monitor-grid">
+            <div class="video-card">
+                <div class="card-header">LIVE MONITORING</div>
+                <img src="{{ url_for('video_feed') }}" width="640" height="480" class="webcam-stream">
+            </div>
+
+            <div class="log-card">
+                <div class="card-header">PROCESS LOGS (FIREBASE)</div>
+                <div class="log-table-wrapper">
+                    <table id="log-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; padding: 10px;">TIME</th>
+                                <th style="text-align: left; padding: 10px;">STEP / STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

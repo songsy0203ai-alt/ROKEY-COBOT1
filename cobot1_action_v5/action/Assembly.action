@@ -1,0 +1,8 @@
+# Goal: 어떤 모션을 수행할지 번호를 받음
+int32 glue_type
+---
+# Result
+bool success
+---
+# Feedback
+string completed_step

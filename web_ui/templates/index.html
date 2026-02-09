@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M0609을 이용한 자동차 부품 제작 자동화 시스템</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-navy">
+    <div class="glass-container">
+        <header>
+            <h1 class="glow-text">M0609을 이용한 자동차 부품 제작 자동화 시스템</h1>
+        </header>
+
+        <div class="grid-layout">
+            <div class="control-card" onclick="startProcess(1, 'square')">
+                <div class="card-num">01</div>
+                <h3>LINEAR-ZIGZAG MODE</h3>
+                <span class="btn-launch">LAUNCH PROCESS</span>
+            </div>
+
+            <div class="control-card" onclick="startProcess(2, 'zigzag')">
+                <div class="card-num">02</div>
+                <h3>ARC-ZIGZAG MODE</h3>
+                <span class="btn-launch">LAUNCH PROCESS</span>
+            </div>
+
+            <div class="control-card" onclick="startProcess(3, 'circle')">
+                <div class="card-num">03</div>
+                <h3>CIRCLE MODE</h3>
+                <span class="btn-launch">LAUNCH PROCESS</span>
+            </div>
+
+            <div class="control-card" onclick="startProcess(4, 'spiral')">
+                <div class="card-num">04</div>
+                <h3>SPIRAL MODE</h3>
+                <span class="btn-launch">LAUNCH PROCESS</span>
+            </div>
+
+            <div class="control-card summary-card" onclick="location.href='/process/summary'">
+                <div class="card-num" style="color: #ff00ff; text-shadow: 0 0 10px #ff00ff;">AI</div>
+                <h3>PROCESS SUMMARY</h3>
+                <span class="btn-launch" style="color: #ff00ff; border-top: 1px solid rgba(255, 0, 255, 0.2);">ANALYZE TODAY'S LOGS</span>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

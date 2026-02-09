@@ -1,0 +1,16 @@
+# Web Framework
+Flask>=2.0.0
+
+# Firebase Realtime Database
+# Firebase Certification and url required.
+firebase-admin>=6.0.0
+
+# AI Analytics (Gemini)
+google-generativeai>=0.3.0
+
+# Computer Vision & Image Processing
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# Environment Variables (Optional but recommended)
+python-dotenv>=1.0.0

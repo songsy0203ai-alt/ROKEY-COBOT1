@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Process Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="cyber-navy sub-page">
+    <div class="process-container">
+        <nav class="sub-nav">
+            <button onclick="location.href='/'" class="btn-home">← BACK TO DASHBOARD</button>
+            <h2 class="glow-text">AI PROCESS ANALYTICS</h2>
+        </nav>
+
+        <div class="summary-grid">
+            <div class="stat-card highlight">
+                <h3>TODAY'S PRODUCTION</h3>
+                <div class="count-number">{{ count }} <span>Units</span></div>
+                <p class="count-label">공정 완료 기준 집계</p>
+            </div>
+
+            <div class="stat-card ai-report">
+                <h3>AI INSIGHT (Gemini)</h3>
+                
+                <div id="ai-initial-ui" class="ai-button-container">
+                    <button onclick="requestAiSummary()" class="btn-ai-request">
+                        오늘의 공정 AI로 요약하기 (Powered by Gemini-2.5-flash)
+                    </button>
+                    <p class="ai-hint">최근 로그 데이터를 바탕으로 AI 분석을 시작합니다.</p>
+                </div>
+
+                <div id="ai-loading-ui" class="ai-loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Gemini가 오늘의 공정을 요약하고 있습니다..</p>
+                </div>
+
+                <div id="ai-result-ui" class="ai-content" style="display: none;">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
