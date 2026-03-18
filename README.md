@@ -20,12 +20,12 @@
 ```text
 .
 ├── README.md                          # 프로젝트 개요 및 실행 방법
-├── cobot1_action_v5                   # [Action] 공정 액션 정의 패키지
+├── 01_cobot1_action_v5                   # [Action] 공정 액션 정의 패키지
 │   ├── CMakeLists.txt
 │   ├── action
 │   │   └── Assembly.action            # 공정 Goal/Feedback/Result 정의
 │   └── package.xml
-├── cobot1_nodes_v5                    # [Node] 로봇 제어 및 중계 패키지
+├── 02_cobot1_nodes_v5                    # [Node] 로봇 제어 및 중계 패키지
 │   ├── cobot1_nodes_v5
 │   │   ├── __init__.py
 │   │   ├── control_node_v5.py         # Firebase-Action 중계 및 흐름 제어
@@ -34,11 +34,11 @@
 │   ├── package.xml
 │   ├── setup.cfg
 │   └── setup.py
-├── images                             # 시스템 아키텍처 및 결과물 이미지
+├── 03_images                             # 시스템 아키텍처 및 결과물 이미지
 │   ├── flow_chart.jpg
 │   ├── system_architecture.jpg
 │   └── node_architecture.jpg
-└── web_ui                             # [Web] Flask 모니터링 서버 소스
+└── 04_web_ui                             # [Web] Flask 모니터링 서버 소스
     ├── app.py                         # 웹 서버 메인 및 Gemini API 연동
     ├── static                         # 프론트엔드 에셋
     │   ├── script.js                  # Firebase 연동 및 비동기 UI 로직
@@ -54,23 +54,23 @@
 
 | 폴더명 | 설명 |
 | --- | --- |
-| **`cobot1_action_v5`** | 로봇의 복합 공정을 정의하는 액션 인터페이스를 포함합니다. |
-| **`cobot1_nodes_v5`** | Firebase 명령을 로봇으로 중계하고 공정 로직을 수행하는 핵심 노드들이 위치합니다. |
-| **`web_ui`** | 사용자 인터페이스(UI)를 담당하며, Flask 서버와 Firebase RTDB를 통해 로봇과 실시간으로 통신합니다. |
-| **`static / templates`** | 웹 대시보드의 시각적 요소와 Gemini API 연동을 위한 프론트엔드 코드가 포함되어 있습니다. |
+| **`01_cobot1_action_v5`** | 로봇의 복합 공정을 정의하는 액션 인터페이스를 포함합니다. |
+| **`02_cobot1_nodes_v5`** | Firebase 명령을 로봇으로 중계하고 공정 로직을 수행하는 핵심 노드들이 위치합니다. |
+| **`04_web_ui`** | 사용자 인터페이스(UI)를 담당하며, Flask 서버와 Firebase RTDB를 통해 로봇과 실시간으로 통신합니다. |
+| **`04_web_ui/ static / templates`** | 웹 대시보드의 시각적 요소와 Gemini API 연동을 위한 프론트엔드 코드가 포함되어 있습니다. |
 
 ---
 
 ## 📊 System Representing Images
 
 ### 1. System Architecture
-![system_architecture](images/system_architecture.jpg)
+![system_architecture](03_images/system_architecture.jpg)
 
 ### 2. Node Architecture
-![node_architecture](images/node_architecture.jpg)
+![node_architecture](03_images/node_architecture.jpg)
 
 ### 3. Flow Chart
-![flow_chart](images/flow_chart.jpg)
+![flow_chart](03_images/flow_chart.jpg)
 
 ---
 
@@ -126,11 +126,10 @@
 ```bash
 # 1. 시스템 실행 (로봇 Bringup & 필요 노드 및 웹 앱 실행)
 ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=real host:=192.168.1.100 port:=12345 model:=m0609
-ros2 run cobot1_nodes_v5 integration_node_v5
-ros2 run cobot1_nodes_v5 control_node_v5
-ros2 run cobot1_nodes_v5 db_bridge_node_v5
-cd web_monitor_v5/web_ui
-python3 app.py
+ros2 run 02_cobot1_nodes_v5 integration_node_v5
+ros2 run 02_cobot1_nodes_v5 control_node_v5
+ros2 run 02_cobot1_nodes_v5 db_bridge_node_v5
+python3 04_web_ui/app.py
 
 # 2. Flask 웹 서버 실행 (GEMINI_API_KEY 설정 필수)
 export GEMINI_API_KEY='your_api_key_here'
